@@ -44,7 +44,24 @@ public class StarMap extends PApplet
 
     public void draw()
     {
-
+        drawGrid();
     }
 
+
+    public void drawGrid()
+    {
+       float border = width * 0.05f;
+
+       stroke(0, 0, 255);
+       for (int i = -5; i <= 5; i++) {
+           float x = map(i, -5, 5, border, width - border);
+           line(x, border, x, height - border);
+           line(border, x, width - border, x);
+           
+           fill(255);
+           text(i, x, border / 2);
+           text(i, x, border / 2);
+
+        }
+    }
 }
