@@ -1,5 +1,8 @@
 package ie.tudublin;
 
+import java.util.Map;
+
+import processing.core.PApplet;
 import processing.data.TableRow;
 
 public class Star
@@ -113,6 +116,15 @@ public class Star
         );
     }
 
+    public void render(PApplet pa) {
+        float border = pa.width * 0.05f;
+        float x = PApplet.map(xG, -5, 5, border, pa.width - border);
+        float y = PApplet.map(yG, -5, 5, border, pa.height - border);
 
+        pa.stroke(255, 255, 0);
+        pa.line(x, y - 5, x, y + 5 );
+        pa.line(x - 5, y, x + 5, y);
+        
+    }
     
 }
