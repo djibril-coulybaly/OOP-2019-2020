@@ -20,6 +20,7 @@ public class StarMap extends PApplet
         }
     }
 
+    //Function to draw the grid 
     public void drawGrid()
     {
         float border = width * 0.05f;
@@ -29,12 +30,12 @@ public class StarMap extends PApplet
         for(int i = -5 ; i <= 5 ; i ++)
         {
             float x = map(i, -5, 5, border, width - border);
-            line(x, border, x, height - border);
-            line(border, x, width - border, x);    
+            // line(x, border, x, height - border);
+            // line(border, x, width - border, x);    
             
-            fill(255);
-            text(i, x, border / 2);
-            text(i, border / 2, x);
+            // fill(255);
+            // text(i, x, border / 2);
+            // text(i, border / 2, x);
         }
     }
 
