@@ -9,6 +9,9 @@ public class BugZap extends PApplet {
     public void setup() {
 		playerX = width / 2; //Sets the x-coordinate to half the width of the screen
 		playerY = height - 50; //Sets the y-coordinate to 50 pixels above the height
+		
+		bugX = width / 2;
+		bugY = 50;
 		smooth();
     }
 	
@@ -18,10 +21,26 @@ public class BugZap extends PApplet {
 	float playerWidth = 40; //Width of the player
 	float halfPlayerWidth = playerWidth / 2; //Half the width of the player
 
+	float bugX;
+	float bugY;
+	float bugWidth = 30;
+	float halfBugWidth = bugWidth / 2;
+
 	//Function to draw on the screen. Loops continuously until the sketch window is closed
     public void draw() {
-        drawPlayer(playerX, playerY, playerWidth);
+		drawPlayer(playerX, playerY, playerWidth);
+		drawBug(bugX, bugY, bugWidth);
     }
+
+	void drawBug(float x, float y, float w){
+		stroke(255);
+
+		float bugHeight = w/2;
+		line(x - halfBugWidth, y + bugHeight, x + halfBugWidth, y + bugHeight);
+		line(x - halfBugWidth, y + bugHeight, x, y - bugHeight);
+		line(x, y - bugHeight, x + halfBugWidth, y + bugHeight);
+	}
+
 
     void drawPlayer(float x, float y, float w){
 		background(0); //Set the background colour to black
@@ -65,7 +84,7 @@ public class BugZap extends PApplet {
 		}
 		if (key == ' ')
 		{
-			
+			line(playerX, playerY, playerX, playerY - height); //Drawing the gun of the player 
 			System.out.println("SPACE key pressed");
 		}
 	}	
