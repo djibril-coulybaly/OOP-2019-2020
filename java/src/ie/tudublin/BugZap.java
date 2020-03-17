@@ -4,59 +4,68 @@ import processing.core.PApplet;
 public class BugZap extends PApplet {
     public void settings() {
         size(500, 500);
-        playerX = width / 2;
-        playerY = height - (playerHeight * 2);
-        
     }
     
     public void setup() {
+		playerX = width / 2; //Sets the x-coordinate to half the width of the screen
+		playerY = height - 50; //Sets the y-coordinate to 50 pixels above the height
+		smooth();
     }
+	
+	//Declaring and Initializing Variables
+	float playerX; 
+	float playerY;
+	float playerWidth = 40; //Width of the player
+	float halfPlayerWidth = playerWidth / 2; //Half the width of the player
 
-    float playerX;
-    float playerY;
-    float playerWidth = 50;
-    float playerHeight = 30;
-
+	//Function to draw on the screen. Loops continuously until the sketch window is closed
     public void draw() {
-        drawPlayer(playerX, playerY, playerWidth, playerHeight);
+        drawPlayer(playerX, playerY, playerWidth);
     }
 
-    void drawPlayer(float x, float y, float w, float h){
-       
-        background(0);
-
+    void drawPlayer(float x, float y, float w){
+		background(0); //Set the background colour to black
+		
         //Draw the player
-        float halfWidth = w * 0.5f;
-        float halfHeight = h * 0.5f;
-
-        stroke(255);
-        line(x - halfWidth, y + halfHeight, x + halfWidth, y + halfHeight);
-        line(x - halfWidth, y + halfHeight, x - halfWidth, y);
-        line(x - halfWidth, y, x - (w * 0.25f), y - halfHeight);
-        line(x - (w * 0.25f), y - halfHeight, x + (w * 0.25f),  y - halfHeight);
-        line( x + (w * 0.25f),  y - halfHeight, x + halfWidth, y);
-        line(x + halfWidth, y, x + halfWidth, y + halfHeight);
-    
-        // line(x, y, x+100, y);
-        // line(x, y, x, y-25);
-        // line(x+100, y, x+100, y-25);
-        // line(x, y-25, x+25, y-50);
-        // line(x+25, y-50, x+75, y-50);
-        // line(x+75, y-50, x+100, y-25);
+		float playerHeight = w / 2; 
+		stroke(255); //Sets the outline of the line to white
+		
+		line(x - halfPlayerWidth, y + playerHeight, x + halfPlayerWidth, y + playerHeight); //Drawing the base of the player i.e. _____
+		line(x - halfPlayerWidth, y + playerHeight, x - halfPlayerWidth, y + playerHeight * 0.5f); //Drawing the left vertical line of the player i.e |
+		line(x + halfPlayerWidth, y + playerHeight, x + halfPlayerWidth, y + playerHeight * 0.5f); //Drawing the right vertical line of the player i.e |
+		
+		
+		line(x - halfPlayerWidth, y + playerHeight * 0.5f, x - (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f); //Drawing the left diagonal line of the player i.e. /
+		line(x + halfPlayerWidth, y + playerHeight * 0.5f, x + (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f); //Drawing the right diagonal line of the player i.e. \
+		
+		line(x - (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f, x + (halfPlayerWidth * 0.8f), y + playerHeight * 0.3f); //Drawing the top of the player i.e. --------
+		
+		line(x, y, x, y + playerHeight * 0.3f); //Drawing the gun of the player 
     }
 
     public void keyPressed()
 	{
-		if (keyCode == LEFT)
+		// When the user presses the left key on the keyboard and while the centre of the 
+		// player is greater than half the width of the player 
+		// (i.e. Doesnt reach the far left edge of the screen), 
+		// the player will move to the left by decrementing playerX
+		if (keyCode == LEFT && playerX > halfPlayerWidth)
 		{
+			playerX--;
 			System.out.println("Left arrow pressed");
 		}
-		if (keyCode == RIGHT)
+		// When the user presses the right key on the keyboard
+		// and while the centre of the player is less than the width of the screen minus
+		// half the width of the player (i.e. Doesnt reach the far right edge of the screen), 
+		// the player will move to the left by decrementing playerX
+		if (keyCode == RIGHT && playerX < width - halfPlayerWidth)
 		{
+			playerX++;
 			System.out.println("Right arrow pressed");
 		}
 		if (key == ' ')
 		{
+			
 			System.out.println("SPACE key pressed");
 		}
 	}	
