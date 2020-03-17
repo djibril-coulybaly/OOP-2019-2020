@@ -10,7 +10,6 @@ public class BugZap extends PApplet {
     }
     
     public void setup() {
-        smooth(8);
     }
 
     float playerX;
