@@ -131,17 +131,41 @@ public class Loops extends PApplet
 			ellipse(x, radius, diameter, diameter);
 		}
 	}
-
+	
 	public void picture5() {
-		background(0);
-		float numSquare = 10;
-		float sqLength = width/numSquare;
+		// background(0);
+		// stroke(0,255,0);
+		// while (x <  width - x1) {
+		// 	line(x, y, x, height - y);
+		// 	x = x + ls;
+		// }
 
-		for (int i = 0; i < numSquare; i++) {
-			for (int j = 0; j < numSquare; j++) {
-				stroke(0,255,0);
-				rect(i *sqLength, j * sqLength, sqLength, sqLength);
-			}
+		// while (y <=  height - y1) {
+		// 	line(x, y, width - x, y);
+		// 	y = y + ls;
+		// }
+
+		float lineSpacing = width * 0.1f; // Creates a variable that determines the spacing between each line
+		float halfLineSpacing = lineSpacing / 2.0f; /* Creates a variable that determines the spacing between 
+													   the line and the label axis */
+		colorMode(RGB); // Sets the colour range to RGB (Red, Green, Blue)
+		background(0);
+		stroke(0, 255, 0);
+		textAlign(CENTER, CENTER); // Aligns the text of the axis labels both horizontally and vertically
+		for(int i = -5 ; i <=5 ; i ++) // For loop to draw the grid from the ranges -5 to 5
+		{
+			//Drawing the vertical and horizontal lines of the grid
+			float x = map(i, -5, 5, lineSpacing, width -lineSpacing); /* Converting the range currently set in i from 
+																		-5 - 5 to lineSpacing and width -lineSpacing
+																		into the variable x */ 				
+			line(x, lineSpacing, x, height - lineSpacing); //Draws the horizontal line of the grid  
+			line(lineSpacing, x, width - lineSpacing, x); //Drawing the vertical line of the grid
+			
+			//Drawing the axis labels on the grid
+			fill(255); //Sets the colour of the text to white
+			text(i, x, halfLineSpacing); // Displays the axis label horizontally
+			text(i, halfLineSpacing, x); // Displays the axis label vertically
 		}
 	}
+	
 }
