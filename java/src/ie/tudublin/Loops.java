@@ -46,10 +46,10 @@ public class Loops extends PApplet
 		// }
 		
 		//picture1();
-		//picture2();
+		picture2();
 		//picture3();
 		//picture4();
-		picture5();
+		//picture5();
 	}
 
 	public void picture1() {
@@ -85,7 +85,6 @@ public class Loops extends PApplet
 
 	public void picture2() {
 		int w = width;
-		int h = height;
 		int x = 25;
 		int y = 50;
 
