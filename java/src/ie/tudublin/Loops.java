@@ -11,7 +11,7 @@ public class Loops extends PApplet
 
 	public void setup() 
 	{
-
+		smooth();
 	}
 
 	
@@ -46,10 +46,12 @@ public class Loops extends PApplet
 		// }
 		
 		//picture1();
-		picture2();
+		//picture2();
 		//picture3();
 		//picture4();
 		//picture5();
+		//picture6();
+		picture8(); 
 	}
 
 	public void picture1() {
@@ -166,5 +168,59 @@ public class Loops extends PApplet
 			text(i, halfLineSpacing, x); // Displays the axis label vertically
 		}
 	}
-	
+
+	public void picture6() {
+		int middle = width / 2;
+		int spacing = 70;
+		int y = height - 70;
+		int w = 40;
+		int h = 30;
+
+		for (; y >= spacing; y -= h) {
+			rectMode(CENTER);
+			rect(middle, y, w, h);
+			w += 20;
+		}
+	}
+
+	public void picture8() {
+		// background(0);
+		// float x1 = 0;
+		// float y1 = 0;
+		// float h = 10;
+		// float w = 10;
+
+		// for(int i = 0 ; i <= 30 ; i ++)
+		// {			
+		// 	for (int j = 0; j <= 30; j++) {
+		// 		float x = map(i, 0, 30, x1, height);	
+		// 		float y = map(j, 0, 30, width, height);			
+		// 		stroke(255);
+		// 		rect(x, y1, w, h);
+		// 		rect(x1, y, w, h);
+		// 	}
+		// }
+
+
+		int i, j;
+		int squareSize = 25;
+		boolean trigger = true;
+		for (i = 0 ; i <= width; i += squareSize)
+		{
+			for(j = 0 ; j <= height ; j += squareSize)
+			{
+				if (trigger == true)
+				{
+					fill(0, 0, 255);
+					trigger = false;
+				}
+				else
+				{
+					fill(0, 0, 140);
+					trigger = true;
+				}
+				rect(i, j, squareSize, squareSize);
+			}
+		}
+	}
 }
